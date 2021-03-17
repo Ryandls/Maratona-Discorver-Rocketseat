@@ -132,16 +132,38 @@ const Utils = {
 };
 
 const Form = {
-  formatData() {
-    console.log('Formatar os dados');
+  description: document.querySelector('input#description'),
+  amout: document.querySelector('input#amount'),
+  date: document.querySelector('input#date'),
+
+  getValues() {
+    return {
+      description: Form.description.value,
+      amout: Form.amount.value,
+      date: Form.date.value,
+    };
   },
+
   validateFields() {
-    console.log('validar os campos');
+    const { description, amount, date } = Form.getValues();
+
+    if (
+      description.trim() === '' ||
+      amout.trim() === '' ||
+      date.trim() === ''
+    ) {
+      throw new Error('Por favor, preencha todos os campos.');
+    }
   },
+
   submit(event) {
     event.preventDefault();
-    Form.validateFields();
-    Form.formatData();
+
+    try {
+      Form.validateFields();
+    } catch (error) {
+      alert(error.message);
+    }
   },
 };
 
