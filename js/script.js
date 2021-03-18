@@ -67,14 +67,14 @@ const Transaction = {
 };
 
 const DOM = {
-  transactionContainer: document.querySelector('#data-table tbody'),
+  transactionsContainer: document.querySelector('#data-table tbody'),
 
   addTransaction(transaction, index) {
     const tr = document.createElement('tr');
     tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
     tr.dataset.index = index;
 
-    DOM.transactionContainer.appendChild(tr);
+    DOM.transactionsContainer.appendChild(tr);
   },
   innerHTMLTransaction(transaction, index) {
     const CSSclass = transaction.amount > 0 ? 'income' : 'expense';
@@ -105,7 +105,7 @@ const DOM = {
   },
 
   clearTransactions() {
-    DOM.transactionContainer.innerHTML = '';
+    DOM.transactionsContainer.innerHTML = '';
   },
 };
 
